@@ -9,6 +9,8 @@ hotelController.get('/:id/details', async (req, res) => {
 
     if (hotel.owner == req.user._id) {
         hotel.isOwner = true;
+    }else if (hotel.bookings.includes(req.user._id.toString())){
+        hotel.isBooked = true;
     }
 
     res.render('details', {
