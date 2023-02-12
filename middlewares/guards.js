@@ -1,3 +1,4 @@
+
 function hasUser() {
     return (req, res, next) => {
         if(req.user){
@@ -18,7 +19,7 @@ function isGuest() {
     }
 }
 
-module.exsports = {
+module.exports = {
     hasUser,
     isGuest
 };

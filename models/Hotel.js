@@ -1,4 +1,4 @@
-const { Schems, model, Types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 
 const URL_PATTERN = /^https?:\/\/.+$/i;
@@ -24,7 +24,7 @@ const hotelSchema = new Schema({
         }
 
     },
-    freeRooms: {
+    rooms: {
         type: Number,
         required: true,
         min: [1, 'Rooms must be between 1 and 100'],
