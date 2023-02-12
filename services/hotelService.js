@@ -5,7 +5,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    
+    return Hotel.findById(id).lean();
 }
 
 async function create(hotel) {
