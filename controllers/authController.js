@@ -54,6 +54,7 @@ authController.post('/login', async (req, res) => {
 
     } catch(error){
         const errors = parseError(error);
+        // TODO: add error display to actual template from assignmet
         res.render('login', {
             title: 'Login Page',
             errors,
