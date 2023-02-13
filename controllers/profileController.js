@@ -1,8 +1,10 @@
 const profileController = require('express').Router();
+const{ hasUser } = require('../middlewares/guards');
 
-profileController.get('/', (req, res) => {
+profileController.get('/', hasUser(), (req, res) => {
     res.render('profile', {
-        title: 'Profile Page'
+        title: 'Profile Page',
+        user: req.user
     });
 });
 
