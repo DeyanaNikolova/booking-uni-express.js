@@ -12,6 +12,9 @@ async function create(hotel) {
     return await Hotel.create(hotel)
 }
 
+async function getByUserBooking(userId) {
+    return (await Hotel.find({bookings: userId }).lean());
+}
 async function update(id, hotel) {
     const existing = await Hotel.findById(id);
     existing.name = hotel.name;
@@ -29,9 +32,6 @@ async function deleteById(id) {
 async function bookRoom(hotelId, userId) {
     const hotel = await Hotel.findById(hotelId);
 
-    if(hotel.bookings.includes(userId)){
-        throw new Error('Cannot book twice!');
-    }
     hotel.bookings.push(userId);
     await hotel.save();
 }
@@ -42,5 +42,6 @@ module.exports = {
     create,
     update,
     deleteById,
-    bookRoom
+    bookRoom,
+    getByUserBooking
 };
